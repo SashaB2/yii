@@ -37,6 +37,7 @@ class m201010_162915_initdb extends Migration
                 'description' => $this->string(255)->defaultValue(null),
                 'img' => $this->string(255)->defaultValue('no-image.png'),
                 'hit' => $this->boolean(),
+                'new' => $this->boolean(),
                 'sale' => $this->boolean(),
                 'created_at' => $this->timestamp()->defaultValue(null),
                 'updated_at' => $this->timestamp()->defaultValue(null),

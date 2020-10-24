@@ -1,13 +1,21 @@
 version: '2'
+networks:
+  appnet:
+    external:
+      name: appnet
 services:
   php:
-    image: yiisoftware/yii2-php:7.1-apache
+    networks:
+      - appnet
+    image: yiisoftware/yii2-php:7.4-apache
     volumes:
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
       - ./:/app:delegated
     ports:
       - '8000:80'
   yiipgsql:
+    networks:
+      - appnet
     image: postgres:10-alpine
     volumes:
       - type: volume
@@ -21,6 +29,8 @@ services:
     ports:
       - "5456:5432"
   yiipgsql-test:
+    networks:
+      - appnet
     image: postgres:10-alpine
     volumes:
       - type: volume
@@ -33,7 +43,6 @@ services:
       - "POSTGRES_DB=cipgsql"
     ports:
       - "5466:5432"
-
 volumes:
   ci_pgsql_data:
   ci_pgsql_test_data:
