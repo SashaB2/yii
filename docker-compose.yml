@@ -22,10 +22,10 @@ services:
         source: ci_pgsql_data
         target: /var/lib/pgsql/data
     environment:
-      - "POSTGRES_USER=currencyinfo"
-      - "POSTGRES_PASSWORD=currencyinfo"
+      - "POSTGRES_USER=yii"
+      - "POSTGRES_PASSWORD=yii"
       - "PGDATA=/var/lib/pgsql/data"
-      - "POSTGRES_DB=cipgsql"
+      - "POSTGRES_DB=yii_db"
     ports:
       - "5456:5432"
   yiipgsql-test:
