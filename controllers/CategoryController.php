@@ -18,7 +18,6 @@ class CategoryController extends AppController
     }
 
     public function actionView($id){
-        $id = \Yii::$app->request->get('id');
         $category = Category::findOne($id);
         if(empty($category))
             throw new HttpException(404, 'Такої категорії нема');
@@ -32,5 +31,14 @@ class CategoryController extends AppController
         $category = Category::findOne($id);
         $this->setMeta('E-SHOPPER | ' . $category->name, $category->keyword, $category->description);
         return $this->render('view', compact('products', 'category', 'pages'));
+    }
+
+    public function actionSearch(){
+        $q = \Yii::$app->request->get('q');
+        $query = Product::find()->where(['like', 'name', $q]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3,
+            'forcePageParam' => false, 'pageSizeParam' => false]);
+
+        return $this->render('search', compact('query', 'pages', 'q'));
     }
 }
