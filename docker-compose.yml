@@ -19,7 +19,7 @@ services:
     image: postgres:10-alpine
     volumes:
       - type: volume
-        source: ci_pgsql_data
+        source: yii_data
         target: /var/lib/pgsql/data
     environment:
       - "POSTGRES_USER=yii"
@@ -34,15 +34,15 @@ services:
     image: postgres:10-alpine
     volumes:
       - type: volume
-        source: ci_pgsql_test_data
+        source: yii_test_data
         target: /var/lib/pgsql/data
     environment:
-      - "POSTGRES_USER=currencyinfo_test"
-      - "POSTGRES_PASSWORD=currencyinfo_test"
+      - "POSTGRES_USER=yii_test"
+      - "POSTGRES_PASSWORD=yii_test"
       - "PGDATA=/var/lib/pgsql/data"
-      - "POSTGRES_DB=cipgsql"
+      - "POSTGRES_DB=yii_test_db"
     ports:
       - "5466:5432"
 volumes:
-  ci_pgsql_data:
-  ci_pgsql_test_data:
+  yii_data:
+  yii_test_data:

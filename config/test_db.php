@@ -1,6 +1,18 @@
 <?php
-$db = require __DIR__ . '/db.php';
-// test database! Important not to run tests on production or development databases
-$db['dsn'] = 'mysql:host=localhost;dbname=yii2basic_test';
+$dns='pgsql:host=yiipgsql-test;port=5432;dbname=yii_test_db';
+if(PHP_OS == 'WINNT'){
+    $dns='pgsql:host=yiipgsql-test;port=5432;dbname=yii_test_db';
+}
 
-return $db;
+return [
+    'class' => 'yii\db\Connection',
+    'dsn' => $dns,
+    'username' => 'yii_test',
+    'password' => 'yii_test',
+    'charset' => 'utf8',
+
+    // Schema cache options (for production environment)
+    //'enableSchemaCache' => true,
+    //'schemaCacheDuration' => 60,
+    //'schemaCache' => 'cache',
+];
