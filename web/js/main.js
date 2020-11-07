@@ -10,6 +10,24 @@
 		
 /*scroll to top*/
 
+$('.add-to-cart').on('click', function (e){
+	e.preventDefault();
+	var id = $(this).data('id');
+	$.ajax({
+		url: 'cart/add',
+		data: {id: id},
+		type: 'GET',
+		success: function (res) {
+			if(!res) alert('Error product');
+			console.log(res);
+			// showCart(rest);
+		},
+		error: function (){
+			alert('Error');
+		}
+	});
+});
+
 $(document).ready(function(){
 	$(function () {
 		$.scrollUp({

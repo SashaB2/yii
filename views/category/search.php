@@ -4,7 +4,6 @@ use yii\helpers\Html;
 
 
 ?>
-
 <section id="advertisement">
     <div class="container">
         <img src="/images/shop/advertisement.jpg" alt=""/>
@@ -53,7 +52,7 @@ use yii\helpers\Html;
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center"><?= 'Запит пошуку:' . $q?></h2>
+                    <h2 class="title text-center"><?= 'Запит пошуку:' . Html::encode($q)?></h2>
                     <?php if (isset($products)): ?>
                         <?php $i=0; foreach ($products as $product): ?>
                             <div class="col-sm-4">
