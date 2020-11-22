@@ -90,14 +90,14 @@
                             <h2><?= $product->name ?></h2>
                             <p>Web ID: 1089772</p>
                             <img src="/images/product-details/rating.png" alt=""/>
-                            <span>
+                                 <span>
 									<span>US $<?= $product->price ?></span>
 									<label>Quantity:</label>
-									<input type="text" value="3"/>
-									<button type="button" class="btn btn-fefault cart">
+									<input type="text" value="1" id="qty"/>
+									<a href="<?= \yii\helpers\Url::to(['cart/add', 'id'=>$product->id])?>" data-id="<?= $product->id?>" class="btn btn-default add-to-cart cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
-									</button>
+									</a>
 								</span>
                             <p><b>Availability:</b> In Stock</p>
                             <p><b>Condition:</b> New</p>
@@ -307,17 +307,21 @@
 
                     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            <?php $count = count($hits); $i = 0; foreach ($hits as $hit): ?>
+                            <?php $count = count($hits);
+                            $i = 0;
+                            foreach ($hits as $hit): ?>
                                 <?php if ($i % 3 == 0): ?>
                                     <div class="item <?php if ($i == 0) echo 'active'; ?>">
                                 <?php endif; ?>
-                                    <div class="col-sm-4">
+                                <div class="col-sm-4">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <?= \yii\helpers\Html::img('@web/images/products/' . $hit->img, ['alt' => $hit->name]) ?>
-                                                <h2>$<?= $hit->price?></h2>
-                                                <p><a href="<?= \yii\helpers\Url::to(['product/view', 'id' => $hit->id])?>"><?= $hit->name?></a></p>
+                                                <h2>$<?= $hit->price ?></h2>
+                                                <p>
+                                                    <a href="<?= \yii\helpers\Url::to(['product/view', 'id' => $hit->id]) ?>"><?= $hit->name ?></a>
+                                                </p>
                                                 <button type="button" class="btn btn-default add-to-cart"><i
                                                             class="fa fa-shopping-cart"></i>Add to cart
                                                 </button>
@@ -325,7 +329,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php $i++; if ($i % 3 == 0 || $i == $count): ?>
+                                <?php $i++;
+                                if ($i % 3 == 0 || $i == $count): ?>
                                     </div>
                                 <?php endif; ?>
                             <?php endforeach; ?>

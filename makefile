@@ -6,3 +6,6 @@ down:
 
 network:
 	docker network create appnet
+
+restart:
+	docker-compose restart

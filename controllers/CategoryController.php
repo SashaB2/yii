@@ -36,9 +36,10 @@ class CategoryController extends AppController
     public function actionSearch(){
         $q = trim(\Yii::$app->request->get('q'));
         $this->setMeta('E-SHOPPER | ' . $q);
-        if(!$q)
-            $q='';
+        if(!$q) {
+            $q = '';
             return $this->render('search', compact('q'));
+        }
         $query = Product::find()->where(['like', 'name', $q]);
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3,
             'forcePageParam' => false, 'pageSizeParam' => false]);
