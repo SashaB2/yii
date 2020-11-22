@@ -15,9 +15,7 @@ services:
       - ./:/app:delegated
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
     ports:
-      - 8000:80
-      - 465:465
-      - 25:25
+      - 127.0.0.1:8000:80
   yiipgsql:
     networks:
       - appnet
