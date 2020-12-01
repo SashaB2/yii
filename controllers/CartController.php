@@ -73,6 +73,7 @@ class CartController extends AppController
         if($order->load(\Yii::$app->request->post())){
             $order->qty = $session['cart.qty'];
             $order->sum = $session['cart.sum'];
+            $order->status = false;
             if($order->save()){
                 $this->saveOrderItems($session['cart'], $order->id);
                 \Yii::$app->session->setFlash('success', 'Замовлення приняте');

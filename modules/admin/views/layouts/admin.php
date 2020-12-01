@@ -22,7 +22,7 @@ LtAppAsset::register($this);
         <meta charset="<?= Yii::$app->charset ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?php $this->registerCsrfMetaTags() ?>
-        <title><?= Html::encode($this->title) ?></title>
+        <title>Адмінка<?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
         <link rel="shortcut icon" href="images/ico/favicon.ico">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
@@ -98,15 +98,15 @@ LtAppAsset::register($this);
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-<?php if(!Yii::$app->user->isGuest): ?>
-                                <li><a href="<?= \yii\helpers\Url::to('/site/logout')?>"><i class="fa fa-user"></i>
-                                        <?= Yii::$app->user->identity['username']?> (Вихід)
+                                <li><a href="<?= \yii\helpers\Url::to('/site/logout') ?>"><i class="fa fa-user"></i>
+                                        <?= Yii::$app->user->identity['username'] ?> (Вихід)
                                     </a></li>
-<?php endif; ?>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="#" onclick="return getCart()"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to('/admin')?>"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="#" onclick="return getCart()"><i class="fa fa-shopping-cart"></i> Cart</a>
+                                </li>
+                                <li><a href="<?= \yii\helpers\Url::to('/admin') ?>"><i class="fa fa-lock"></i> Login</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -130,13 +130,13 @@ LtAppAsset::register($this);
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 <li><a href="index.html" class="active">Home</a></li>
-                                <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                <li class="dropdown"><a href="<?= \yii\helpers\Url::to('/admin/category/index')?>">Категорії<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
                                         <li><a href="product-details.html">Product Details</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
                                         <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="<?= \yii\helpers\Url::to('/admin')?>">Login</a></li>
+                                        <li><a href="<?= \yii\helpers\Url::to('/admin') ?>">Login</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
@@ -152,7 +152,7 @@ LtAppAsset::register($this);
                     </div>
                     <div class="col-sm-3">
                         <div class="search_box pull-right">
-                            <form method="get" action="<?= \yii\helpers\Url::to('/category/search') ?>" >
+                            <form method="get" action="<?= \yii\helpers\Url::to('/category/search') ?>">
                                 <input type="text" placeholder="Search" name="q"/>
                             </form>
                         </div>
@@ -162,7 +162,9 @@ LtAppAsset::register($this);
         </div><!--/header-bottom-->
     </header><!--/header-->
 
-    <?= $content; ?>
+    <div class="container">
+        <?= $content; ?>
+    </div>
 
     <footer id="footer"><!--Footer-->
         <div class="footer-top">
@@ -324,16 +326,16 @@ LtAppAsset::register($this);
 
     </footer><!--/Footer-->
     <?php \yii\bootstrap\Modal::begin([
-            'header' => '<h2>Корзина</h2>',
-            'id' => 'cart',
-            'size' => 'modal-lg',
-            'footer' => '
+        'header' => '<h2>Корзина</h2>',
+        'id' => 'cart',
+        'size' => 'modal-lg',
+        'footer' => '
                 <button type="button" class="btn btn-default" data-dismiss="modal">Продовжити покупки</button>
-                <a href="'. \yii\helpers\Url::to('/cart/view') .'" class="btn btn-success" >Оформити замовлення</a>
+                <a href="' . \yii\helpers\Url::to('/cart/view') . '" class="btn btn-success" >Оформити замовлення</a>
                 <button type="button" class="btn btn-danger" onclick="clearCart()">Очистити корзину</button>
                 '
-    ])?>
-    <?php \yii\bootstrap\Modal::end()?>
+    ]) ?>
+    <?php \yii\bootstrap\Modal::end() ?>
     <?php $this->endBody() ?>
     </body>
     </html>
