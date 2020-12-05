@@ -53,8 +53,6 @@ class m201021_163642_product extends Migration
     public function safeDown()
     {
         $this->truncateTable($this->product);
-
-        return false;
     }
 
     /*

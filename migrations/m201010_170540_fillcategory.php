@@ -68,6 +68,7 @@ class m201010_170540_fillcategory extends Migration
                 ]
             );
         }
+        return \yii\console\ExitCode::OK;
     }
 
     /**
@@ -76,6 +77,7 @@ class m201010_170540_fillcategory extends Migration
     public function safeDown()
     {
         $this->truncateTable($this->category);
+        return \yii\console\ExitCode::OK;
     }
 
     /*

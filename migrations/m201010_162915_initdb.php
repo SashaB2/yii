@@ -43,6 +43,7 @@ class m201010_162915_initdb extends Migration
                 'updated_at' => $this->timestamp()->defaultValue(null),
             ]
         );
+        return \yii\console\ExitCode::OK;
     }
 
     /**
@@ -52,6 +53,7 @@ class m201010_162915_initdb extends Migration
     {
         $this->dropTable($this->category);
         $this->dropTable($this->product);
+        return \yii\console\ExitCode::OK;
     }
 
     /*

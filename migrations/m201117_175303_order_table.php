@@ -61,6 +61,8 @@ class m201117_175303_order_table extends Migration
             'id',
             'CASCADE'
         );
+
+        return \yii\console\ExitCode::OK;
     }
 
     /**
@@ -72,6 +74,8 @@ class m201117_175303_order_table extends Migration
         $this->dropForeignKey($this->fk_order_item_product, $this->order_item);
         $this->dropTable($this->order);
         $this->dropTable($this->order_item);
+
+        return \yii\console\ExitCode::OK;
     }
 
     /*

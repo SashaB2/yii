@@ -6,7 +6,7 @@ networks:
 services:
   php:
     env_file:
-      - ./.env
+      - docker/php/.env
     networks:
       - appnet
     image: yiisoftware/yii2-php:7.4-apache
