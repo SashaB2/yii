@@ -139,14 +139,12 @@ LtAppAsset::register($this);
                                         <li><a href="<?= \yii\helpers\Url::to('/admin') ?>">Login</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                <li class="dropdown"><a href="<?= \yii\helpers\Url::to('/admin/product/index')?>">Товари<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
                                         <li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -163,6 +161,13 @@ LtAppAsset::register($this);
     </header><!--/header-->
 
     <div class="container">
+        <?php if(Yii::$app->session->hasFlash('success')): ?>
+            <div class="alert alert-success alert-dismissable" role="alert">
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-label="Close"><span aria-hidden="true">&times</span></button>
+                <?php echo Yii::$app->session->getFlash('success');?>
+            </div>
+        <?php endif;?>
         <?= $content; ?>
     </div>
 
